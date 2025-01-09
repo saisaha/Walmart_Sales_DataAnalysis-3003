@@ -61,12 +61,12 @@ This project is an end-to-end data analysis solution designed to extract critica
      - Identifying best-selling product categories.
        ```sql
        with cte as(select branch,category,avg(rating) avg_rating
-from walmart_sale.wal_saledata
-group by branch,category)
-select branch,category,avg_rating from (
-select *, row_number() over(partition by branch order by avg_rating desc)rn from cte) a
-where rn = 1;
-```
+       from walmart_sale.wal_saledata
+       group by branch,category)
+      select branch,category,avg_rating from (
+      select *, row_number() over(partition by branch order by avg_rating desc)rn from cte) a
+      where rn = 1
+      ```
      - Sales performance by time, city, and payment method.
      - Analyzing peak sales periods and customer buying patterns.
      - Profit margin analysis by branch and category.
